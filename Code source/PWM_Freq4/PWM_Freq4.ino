@@ -14,7 +14,7 @@ void setup()
   
   pinMode(outPin,OUTPUT);        //Signal generator pin
   
-  setFrequency(500); //generate a square wave (in this case at 1000Hz)
+  setFrequency(300000); //generate a square wave (in this case at 1000Hz)
   
   //for test
   //Serial.println();
@@ -26,7 +26,8 @@ void loop()
 {
 
 
-  int val = analogRead(0);                                              
+  int val = analogRead(0);   
+  Serial.println(val);                                           
   Serial.write( 0xff );                                                         
   Serial.write( (val >> 8) & 0xff );                                            
   Serial.write( val & 0xff );

@@ -6,12 +6,9 @@ float[] gestureThree = null;
 float[][] gesturePoints = new float[4][2];
 float[] gestureDist = new float[4];
 String[] names = {"Nothing", "Touch", "Grab","In water"};
-
-void settings(){
-  size(1000, 500); 
-}
-
 void setup() {
+
+  size(1000, 500); 
 
   MyArduinoGraph.xLabel="Readnumber";
   MyArduinoGraph.yLabel="Amp";
@@ -123,3 +120,4 @@ void stop()
   myPort.stop();
   super.stop();
 }
+
