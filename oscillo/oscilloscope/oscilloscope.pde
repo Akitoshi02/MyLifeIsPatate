@@ -40,7 +40,7 @@ int refresh_mean=0;
 float cur_mean=0.0;
 
 void settings(){
-    size(800, 600);
+    size(1000, 800);
 }
 
 void setup() 
