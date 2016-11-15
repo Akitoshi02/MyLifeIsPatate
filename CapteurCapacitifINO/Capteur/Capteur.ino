@@ -70,14 +70,14 @@ uint8_t readCapacitivePin(int pinToMeasure){
   return cycles;
 }
 void loop(){
-  
+  int valcap = readCapacitivePin(capSensePin);
   // Si le capteur atteint un certain seuil de tension, la led s'allume
   Serial.println(readCapacitivePin(capSensePin));
-  if (readCapacitivePin(capSensePin) == 2) 
+  if (valcap > 25 && valcap < 50) 
   {
     digitalWrite(LEDPin, HIGH);
   }
-  else if  (readCapacitivePin(capSensePin) == 3) 
+  else if (valcap > 50 && valcap < 70) 
   {
     
     digitalWrite(LEDPin, HIGH);
@@ -85,12 +85,12 @@ void loop(){
     digitalWrite(LEDPin, LOW);
     delay(100);
   }
-  else if  (readCapacitivePin(capSensePin) > 4) 
+  else if (valcap > 80) 
   {
     digitalWrite(LEDPin, HIGH);
-    delay(2000);
+    delay(1000);
     digitalWrite(LEDPin, LOW);
-    delay(2000);
+    delay(1000);
   }
   else 
   {
