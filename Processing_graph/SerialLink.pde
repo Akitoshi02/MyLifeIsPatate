@@ -1,6 +1,6 @@
 import processing.serial.*;
 int SerialPortNumber=2;
-int PortSelected=2;
+int PortSelected=0;
 
 /*   =================================================================================       
  Global variables
@@ -49,13 +49,13 @@ Serial myPort;                                        // The serial port object
  =================================================================================*/
 
 void SerialPortSetup() {
-
+    println(Serial.list()[0]);
   //  text(Serial.list().length,200,200);
 
-  portName= Serial.list()[PortSelected];
+  portName= Serial.list()[0];
   //  println( Serial.list());
   ArrayOfPorts=Serial.list();
-  println(ArrayOfPorts);
+  //println(ArrayOfPorts);
   myPort = new Serial(this, portName, 115200);
   delay(50);
   myPort.clear(); 
@@ -69,7 +69,7 @@ void SerialPortSetup() {
 
 void serialEvent(Serial myPort) {
 
-  while (myPort.available ()>0)
+  while (myPort.available() > 0)
   {
     /* ============================================================    
      Read the next byte that's waiting in the buffer. 
@@ -235,4 +235,3 @@ How that works: if xMSB = 10001001   and xLSB = 0100 0011
   redraw();  
   //    }
 }
-

@@ -17,7 +17,7 @@ void setup() {
   MyArduinoGraph.yLabel="Amp";
   MyArduinoGraph.Title=" Graph";  
   noLoop();
-  PortSelected=1;      /* ====================================================================
+  PortSelected=0;      /* ====================================================================
    adjust this (0,1,2...) until the correct port is selected 
    In my case 2 for COM4, after I look at the Serial.list() string 
    println( Serial.list() );
