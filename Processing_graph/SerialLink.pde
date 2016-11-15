@@ -1,6 +1,6 @@
 import processing.serial.*;
 int SerialPortNumber=2;
-int PortSelected=0;
+int PortSelected=2;
 
 /*   =================================================================================       
  Global variables
@@ -49,14 +49,17 @@ Serial myPort;                                        // The serial port object
  =================================================================================*/
 
 void SerialPortSetup() {
-    println(Serial.list()[0]);
-  //  text(Serial.list().length,200,200);
 
-  portName= Serial.list()[0];
+  // List all the available serial ports
+  println(Serial.list());
+    //text(Serial.list().length,200,200);
+  //portName= Serial.list()[PortSelected];
   //  println( Serial.list());
   ArrayOfPorts=Serial.list();
-  //println(ArrayOfPorts);
-  myPort = new Serial(this, portName, 115200);
+  println(ArrayOfPorts);
+  //myPort = new Serial(this, portName, 115200);
+  myPort = new Serial(this, Serial.list()[0], 115200);
+
   delay(50);
   myPort.clear(); 
   myPort.buffer(20);
@@ -69,7 +72,7 @@ void SerialPortSetup() {
 
 void serialEvent(Serial myPort) {
 
-  while (myPort.available() > 0)
+  while (myPort.available ()>0)
   {
     /* ============================================================    
      Read the next byte that's waiting in the buffer. 
@@ -104,8 +107,6 @@ void serialEvent(Serial myPort) {
 
       Checksum=Checksum%255;
 
-
-
       if (Checksum==serialInArray[serialInArray.length-1]) {
         Error = false;
         DataRecieved=true;
@@ -120,7 +121,6 @@ void serialEvent(Serial myPort) {
     }
 
     if (!Error) {
-
 
       int zeroByte = serialInArray[6];
       // println (zeroByte & 2);
@@ -156,11 +156,6 @@ How that works: if xMSB = 10001001   and xLSB = 0100 0011
        xLSB | xMSB = 10001001 01000011    combine the 2 bytes using the logic or |
        xValue = 10001001 01000011     now xValue is a 2 byte number 0 -> 65536  
        */
-
-
-
-
-
 
 
       /*  ==================================================================
@@ -235,3 +230,5 @@ How that works: if xMSB = 10001001   and xLSB = 0100 0011
   redraw();  
   //    }
 }
+
+

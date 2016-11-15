@@ -1,3 +1,4 @@
+
 /*   =================================================================================       
  The Graph class contains functions and variables that have been created to draw 
  graphs. Here is a quick list of functions within the graph class:
@@ -428,3 +429,5 @@ class Graph
     smoothLine(z, a);
   }
 }
+
+
