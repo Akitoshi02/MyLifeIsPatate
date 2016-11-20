@@ -86,19 +86,19 @@ void loop()
     freq[d] = d;
     Serial.println(results[d]);
     
-    if (results[d] < 280)
+    if (results[d] < 280) //Dans l'eau
     {
       digitalWrite(LEDO, HIGH);
       digitalWrite(LEDV, LOW);
       digitalWrite(LEDB, LOW);
     }
-    else if ( results[d] > 280 && results[d] < 300)
+    else if ( results[d] > 280 && results[d] < 300)// Touché
     {
       digitalWrite(LEDV, HIGH);
       digitalWrite(LEDB, LOW);
       digitalWrite(LEDO, LOW);
     }
-    else if (results[d] > 300 && results[d] < 520)
+    else if (results[d] > 300 && results[d] < 520) // Attrapé
     {
      digitalWrite(LEDV, LOW);
      digitalWrite(LEDB, LOW);
