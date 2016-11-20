@@ -36,7 +36,11 @@ float freq[N];            //-Filtered result buffer
 int sizeOfArray = N;
 
  
-   
+//Définition des ports de sortie des couleurs led
+
+const int LEDO = 10; 
+const int LEDV = 11; 
+const int LEDB = 12;  
    
 
 void setup()
@@ -47,7 +51,11 @@ void setup()
   TCCR1B=0b00011001;        //-+
   ICR1=110;
   OCR1A=55;
-
+  //Led en OUTPUT
+	pinMode(LEDO, OUTPUT);
+	pinMode(LEDV, OUTPUT);
+	pinMode(LEDB, OUTPUT);
+	
   pinMode(9,OUTPUT);        //-Signal generator pin
   pinMode(8,OUTPUT);        //-Sync (test) pin
 
@@ -64,6 +72,8 @@ void loop()
   int counter = 0;
   for(unsigned int d=0;d<N;d++)
   {
+
+	
     int v=analogRead(0);    //-Read response signal
     CLR(TCCR1B,0);          //-Stop generator
     TCNT1=0;                //-Reload new frequency
@@ -81,7 +91,7 @@ void loop()
   }
 
 
-PlottArray(1,freq,results); 
+PlottArray(1,freq,results); //écrit les valeurs sur le port data
  
 
   TOG(PORTB,0);            //-Toggle pin 8 after each sweep (good for scope)
