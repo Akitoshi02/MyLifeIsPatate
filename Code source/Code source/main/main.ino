@@ -51,7 +51,11 @@ void setup()
   TCCR1B=0b00011001;        //-+
   ICR1=110;
   OCR1A=55;
-
+  //Led en OUTPUT
+	pinMode(R, OUTPUT);
+	pinMode(V, OUTPUT);
+	pinMode(B, OUTPUT);
+	
   pinMode(9,OUTPUT);        //-Signal generator pin
   pinMode(8,OUTPUT);        //-Sync (test) pin
 
@@ -68,6 +72,28 @@ void loop()
   int counter = 0;
   for(unsigned int d=0;d<N;d++)
   {
+    //On change de led sellons comment on touche le verre
+   if(results[43] > results[80])
+   {
+      digitalWrite(B, 0);
+      digitalWrite(R, 0);
+      digitalWrite(V, 255);
+
+   }
+   else if(results[80] > results[43] && results[80] > results[87])
+	 {
+      digitalWrite(V, 0);
+      digitalWrite(R, 0);
+      digitalWrite(B, 255);
+   }
+	 else if(results[87] > results[43] && results[87] > results[80])
+	 {
+      digitalWrite(B, 0);
+      digitalWrite(V, 0);
+      digitalWrite(R, 255);
+	 }
+	
+	
     int v=analogRead(0);    //-Read response signal
     CLR(TCCR1B,0);          //-Stop generator
     TCNT1=0;                //-Reload new frequency
@@ -85,7 +111,7 @@ void loop()
   }
 
 
-PlottArray(1,freq,results); 
+PlottArray(1,freq,results); //écrit les valeurs sur le port data
  
 
   TOG(PORTB,0);            //-Toggle pin 8 after each sweep (good for scope)
