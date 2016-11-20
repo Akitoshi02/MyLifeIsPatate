@@ -72,27 +72,7 @@ void loop()
   int counter = 0;
   for(unsigned int d=0;d<N;d++)
   {
-    //On change de led sellons comment on touche le verre
-   if(results[43] > results[80])
-   {
-      digitalWrite(B, 0);
-      digitalWrite(R, 0);
-      digitalWrite(V, 255);
 
-   }
-   else if(results[80] > results[43] && results[80] > results[87])
-	 {
-      digitalWrite(V, 0);
-      digitalWrite(R, 0);
-      digitalWrite(B, 255);
-   }
-	 else if(results[87] > results[43] && results[87] > results[80])
-	 {
-      digitalWrite(B, 0);
-      digitalWrite(V, 0);
-      digitalWrite(R, 255);
-	 }
-	
 	
     int v=analogRead(0);    //-Read response signal
     CLR(TCCR1B,0);          //-Stop generator
