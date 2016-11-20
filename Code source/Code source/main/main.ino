@@ -84,10 +84,32 @@ void loop()
     results[d]=results[d]*0.5+(float)(v)*0.5; //Filter results
    
     freq[d] = d;
+    Serial.println(results[d]);
+    
+    if (results[d] < 280) //Dans l'eau
+    {
+      digitalWrite(LEDO, HIGH);
+      digitalWrite(LEDV, LOW);
+      digitalWrite(LEDB, LOW);
+    }
+    else if ( results[d] > 280 && results[d] < 300)// Touché
+    {
+      digitalWrite(LEDV, HIGH);
+      digitalWrite(LEDB, LOW);
+      digitalWrite(LEDO, LOW);
+    }
+    else if (results[d] > 300 && results[d] < 520) // Attrapé
+    {
+     digitalWrite(LEDV, LOW);
+     digitalWrite(LEDB, LOW);
+     digitalWrite(LEDO, HIGH);
+    }
 
  //   plot(v,0);              //-Display
  //   plot(results[d],1);
   // delayMicroseconds(1);
+
+  
   }
 
 
