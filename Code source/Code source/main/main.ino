@@ -38,9 +38,9 @@ int sizeOfArray = N;
  
 //Définition des ports de sortie des couleurs led
 
-const int R=10; 
-const int V=11; 
-const int B=12;  
+const int LEDO = 10; 
+const int LEDV = 11; 
+const int LEDB = 12;  
    
 
 void setup()
@@ -52,9 +52,9 @@ void setup()
   ICR1=110;
   OCR1A=55;
   //Led en OUTPUT
-	pinMode(R, OUTPUT);
-	pinMode(V, OUTPUT);
-	pinMode(B, OUTPUT);
+	pinMode(LEDO, OUTPUT);
+	pinMode(LEDV, OUTPUT);
+	pinMode(LEDB, OUTPUT);
 	
   pinMode(9,OUTPUT);        //-Signal generator pin
   pinMode(8,OUTPUT);        //-Sync (test) pin
