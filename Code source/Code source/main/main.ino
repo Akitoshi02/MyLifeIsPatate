@@ -36,7 +36,11 @@ float freq[N];            //-Filtered result buffer
 int sizeOfArray = N;
 
  
-   
+//Définition des ports de sortie des couleurs led
+
+const int R=10; 
+const int V=11; 
+const int B=12;  
    
 
 void setup()
