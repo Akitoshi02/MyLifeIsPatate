@@ -87,21 +87,22 @@ void loop()
     results[d]=results[d]*0.5+(float)(v)*0.5; //Filter results
    
     freq[d] = d;
+  
     Serial.println(results[45]);
 
-    if (results[45] < 405 && results[45] > 380) //Dans l'eau vert
+    if (results[45] < 600 && results[45] > 430) //Dans l'eau vert
     {
       digitalWrite(LEDO, HIGH);
       digitalWrite(LEDV, LOW);
       digitalWrite(LEDB, LOW);
     }
-    else if (results[45] < 460 && results[45] > 440)// Touché bleu
+    else if (results[45] < 700 && results[45] > 600)// Touché bleu
     {
       digitalWrite(LEDV, HIGH);
       digitalWrite(LEDB, LOW);
       digitalWrite(LEDO, LOW);
     }
-    else if (results[45] > 460) // Attrapé vert droite
+    else if (results[45] > 700) // Attrapé vert droite
     {
      digitalWrite(LEDV, LOW);
      digitalWrite(LEDB, HIGH);
