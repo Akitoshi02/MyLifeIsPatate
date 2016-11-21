@@ -38,9 +38,9 @@ int sizeOfArray = N;
  
 //Définition des ports de sortie des couleurs led
 
-const int LEDO = 10; 
-const int LEDV = 11; 
-const int LEDB = 12;  
+const int LEDO = 2; 
+const int LEDV = 4; 
+const int LEDB = 7;  
    
 
 void setup()
@@ -67,6 +67,9 @@ void setup()
 
 void loop()
 {
+       digitalWrite(LEDO, LOW);
+      digitalWrite(LEDV, LOW);
+      digitalWrite(LEDB, LOW);
   unsigned int d;
 
   int counter = 0;
@@ -84,25 +87,25 @@ void loop()
     results[d]=results[d]*0.5+(float)(v)*0.5; //Filter results
    
     freq[d] = d;
-    Serial.println(results[d]);
-    
-    if (results[d] < 280) //Dans l'eau
+    Serial.println(results[45]);
+
+    if (results[45] < 405 && results[45] > 380) //Dans l'eau vert
     {
       digitalWrite(LEDO, HIGH);
       digitalWrite(LEDV, LOW);
       digitalWrite(LEDB, LOW);
     }
-    else if ( results[d] > 280 && results[d] < 300)// Touché
+    else if (results[45] < 460 && results[45] > 440)// Touché bleu
     {
       digitalWrite(LEDV, HIGH);
       digitalWrite(LEDB, LOW);
       digitalWrite(LEDO, LOW);
     }
-    else if (results[d] > 300 && results[d] < 520) // Attrapé
+    else if (results[45] > 460) // Attrapé vert droite
     {
      digitalWrite(LEDV, LOW);
-     digitalWrite(LEDB, LOW);
-     digitalWrite(LEDO, HIGH);
+     digitalWrite(LEDB, HIGH);
+     digitalWrite(LEDO, LOW);
     }
 
  //   plot(v,0);              //-Display
@@ -113,7 +116,7 @@ void loop()
   }
 
 
-PlottArray(1,freq,results); //écrit les valeurs sur le port data
+//PlottArray(1,freq,results); //écrit les valeurs sur le port data
  
 
   TOG(PORTB,0);            //-Toggle pin 8 after each sweep (good for scope)
