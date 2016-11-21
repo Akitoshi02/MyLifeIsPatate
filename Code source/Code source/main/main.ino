@@ -90,19 +90,19 @@ void loop()
   
     Serial.println(results[45]);
 
-    if (results[45] < 600 && results[45] > 430) //Dans l'eau vert
+    if (results[45] <= 640 && results[45] > 500) //Dans l'eau vert
     {
       digitalWrite(LEDO, HIGH);
       digitalWrite(LEDV, LOW);
       digitalWrite(LEDB, LOW);
     }
-    else if (results[45] < 700 && results[45] > 600)// Touché bleu
+    else if (results[45] <= 710 && results[45] > 650)// Touché bleu
     {
       digitalWrite(LEDV, HIGH);
       digitalWrite(LEDB, LOW);
       digitalWrite(LEDO, LOW);
     }
-    else if (results[45] > 700) // Attrapé vert droite
+    else if (results[45] > 715) // Attrapé vert droite
     {
      digitalWrite(LEDV, LOW);
      digitalWrite(LEDB, HIGH);
