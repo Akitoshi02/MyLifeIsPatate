@@ -96,7 +96,7 @@ void loop()
       digitalWrite(LEDV, LOW);
       digitalWrite(LEDB, LOW);
     }
-    else if (results[45] <= 710 && results[45] > 650)// Touché bleu
+    else if (results[45] <= 710 && results[45] > 645)// Touché bleu
     {
       digitalWrite(LEDV, HIGH);
       digitalWrite(LEDB, LOW);
